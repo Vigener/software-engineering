@@ -12,7 +12,7 @@ class Character:
         return self._hp
     
     def print_status(self):
-        print(f"Name:  {self._name}\nHP:   {self._hp}")
+        print(f"Name:  {self._name}\nHP:  {self._hp}")
 
 class Player(Character):
     def __init__(self, name: str, hp: int, experience: int):
@@ -26,7 +26,7 @@ class Player(Character):
     
     def print_status(self): # オーバーライド
         super().print_status() # 親クラスのメソッドを呼び出せる
-        print(f"Experience:   {self._experience}")
+        print(f"Experience:  {self._experience}")
         
     def attack(self, enemy):
         print(f"{self._name} attacks {enemy.name}!")
@@ -45,7 +45,7 @@ class Enemy(Character):
     
     def print_status(self):
         super().print_status()
-        print(f"Evilness:   {self._evilness}")
+        print(f"Evilness:  {self._evilness}")
         
 if __name__ == "__main__":
     p = Player("ITF", 100, 0)

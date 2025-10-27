@@ -1,10 +1,10 @@
 class Book:
     # オブジェクト生成時に _author フィールドと _title フィールドをセットする．
-    def __init__(self, author, title, pages: int):
+    def __init__(self, author, title):
         self._author = author
         self._title = title
         # 3. _pagesの定義
-        self._pages = pages
+        self._pages = 0
     
     # --- 1. プロパティの追加
     @property

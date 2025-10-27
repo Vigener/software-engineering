@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"name": "work-01",
+			"path": "work-01"
+		},
+		{
+			"name": "work-02",
+			"path": "work-02"
+		},
+		{
+			"name": "work-03",
+			"path": "work-03"
+		},
+		{
+			"path": "work-04"
+		}
+	],
+	"settings": {}
+}
