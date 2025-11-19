@@ -41,16 +41,30 @@ class Subject(ABC):
     pass
 # ---------------------------------
 
-class Directory(Entry):
+class Directory(Entry, Subject):
   def __init__(self, name: str) -> None:
     super().__init__(name) # 親クラスの__init__の呼び出し
-    self._children = []
+    # 子要素を保存するリスト（Directory の内容）
+    self._children: List[Entry] = []
+    # 1. このディレクトリを観察する Observer を格納するリスト
+    self._observers: List[Observer] = []
 
   def get_children(self) -> List[Entry]:
     return self._children
 
   def add(self, e: Entry) -> None:
     self._children.append(e)
+    # 4. 子が追加されたら、登録された観察者に通知する
+    self.notify_observers()
+
+  def add_observer(self, o: Observer) -> None:
+    # 2. 「観察者」を受け取り、それを「観察者リスト」に追加する
+    self._observers.append(o)
+
+  def notify_observers(self) -> None:
+    # 3. 「観察者リスト」に登録されている全ての「観察者」のupdateメソッドを呼び出し、「自分が変化したこと」を
+    for observer in self._observers:
+      observer.update(self)
 
 # ファイルシステム一般のインタフェースを与える．
 class FileSystem(ABC):

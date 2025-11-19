@@ -16,15 +16,15 @@ class FilterIterator(Iterator[str]):
  
   def __next__(self) -> str:
     # ここで_originalから1文字取得して，chに代入する
-    （ア）
+    ch = next(self._original)
 
-    if self._state == （イ）:
+    if self._state == FilterIterator.AFTER_SPACE:
       if not ch.isspace():
-        self.set_state(（ウ）)
+        self.set_state(FilterIterator.OTHER)
       return ch
     else:
       if ch.isspace():
-        self.set_state(（エ）)
+        self.set_state(FilterIterator.AFTER_SPACE)
         return ch
       return '.'
 if __name__ == "__main__":

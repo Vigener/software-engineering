@@ -17,4 +17,9 @@ class OtherState(State):
   def process_char(self, c: Context, ch: str) -> str:
     # 相互importによるエラーを避けるために，import文をメソッド内に書いている
     from after_space_state import AfterSpaceState
-    ...
+    # 空白文字だったら状態を AfterSpaceState に戻す，空白文字自体はそのまま返す
+    if ch.isspace():
+      c.set_state(AfterSpaceState.get_instance())
+      return ch
+    # 空白以外の文字はドットにする
+    return '.'
